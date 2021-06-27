@@ -9,12 +9,12 @@
     </thead>
     <tbody>
       <tr
-        v-for="event in events"
-        :key="event.id"
-        @click="goToDetailPage(event.id)"
+        v-for="data in tableData"
+        :key="data.id"
+        @click="goToDetailPage(data.id)"
       >
         <td v-for="item in tableColumn" :key="item">
-          {{ event[item.accessor] }}
+          {{ data[item.accessor] }}
         </td>
       </tr>
     </tbody>
@@ -24,7 +24,7 @@
 <script>
 export default {
   props: {
-    events: {},
+    tableData: {},
     tableColumn: {},
   },
   methods: {

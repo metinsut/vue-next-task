@@ -4,7 +4,7 @@
       :updateSearchKeyword="updateSearchKeyword"
       :updateSortType="updateSortType"
     />
-    <TableBody :events="events" :tableColumn="tableColumn" />
+    <TableBody :tableData="tableData" :tableColumn="tableColumn" />
     <TablePagination
       :page="page"
       :links="links"
@@ -21,7 +21,7 @@ import TablePagination from "./table-pagination.vue";
 export default {
   components: { TableBody, TableHeader, TablePagination },
   props: {
-    events: {},
+    tableData: {},
     tableColumn: {},
     currentPage: {},
     page: {},

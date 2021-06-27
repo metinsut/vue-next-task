@@ -1,6 +1,6 @@
 <template>
   <Table
-    :events="events"
+    :tableData="tableData"
     :tableColumn="tableColumn"
     :page="page"
     :links="links"
@@ -21,7 +21,7 @@ export default {
       currentPage: 1,
       searchKeyword: "",
       page: null,
-      events: null,
+      tableData: null,
       links: null,
       tableColumn: [
         { Header: "Name", accessor: "name" },
@@ -48,7 +48,7 @@ export default {
       const result = await response.json();
       this.page = result.page;
       const pureEvents = result._embedded?.events ?? [];
-      this.events = this.normalizeData(pureEvents);
+      this.tableData = this.normalizeData(pureEvents);
       this.links = result._links;
     },
     normalizeData(data) {
@@ -75,7 +75,7 @@ export default {
     },
 
     updateSortType(type) {
-      const sortedEventList = this.events.sort((event1, event2) => {
+      const sortedEventList = this.tableData.sort((event1, event2) => {
         const item1 = event1.name.toLowerCase();
         const item2 = event2.name.toLowerCase();
         if (type === "asc") {
@@ -90,7 +90,7 @@ export default {
         }
         return 0;
       });
-      this.events = sortedEventList;
+      this.tableData = sortedEventList;
     },
   },
 };
